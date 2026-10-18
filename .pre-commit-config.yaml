@@ -1,0 +1,26 @@
+repos:
+  # 1. Быстрые проверки и стиль кода (базовые хуки)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace      # Удаляет лишние пробелы в конце строк
+      - id: end-of-file-fixer        # Добавляет пустую строку в конце файла
+      - id: check-yaml               # Проверяет синтаксис YAML
+      - id: check-merge-conflict     # Ищет маркеры конфликтов слияния (<<<<<<<)
+      - id: check-added-large-files  # Запрещает большие файлы
+        args: ['--maxkb=500']        # Лимит: 500 КБ (можно изменить)
+      - id: detect-private-key       # Ищет приватные ключи (SSH и т.п.)
+
+  # 2. Проверка секретов (API-ключи, пароли, токены)
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: [ '--baseline', '.secrets.baseline' ]
+        exclude: |
+          (?x)^(
+            \.secrets\.baseline|
+            poetry\.lock|
+            package-lock\.json|
+            \.git/
+          )$
