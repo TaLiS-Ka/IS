@@ -22,5 +22,7 @@ repos:
             \.secrets\.baseline|
             poetry\.lock|
             package-lock\.json|
+            manifest\.json|
+            hash_manifest\.json|
             \.git/
           )$

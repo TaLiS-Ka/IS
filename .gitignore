@@ -38,3 +38,5 @@ target/
 Lib/
 Scripts/
 pyvenv.cfg
+data/
+share/
