@@ -8,7 +8,8 @@ repos:
       - id: check-yaml               # Проверяет синтаксис YAML
       - id: check-merge-conflict     # Ищет маркеры конфликтов слияния (<<<<<<<)
       - id: check-added-large-files  # Запрещает большие файлы
-        args: ['--maxkb=500']        # Лимит: 500 КБ (можно изменить)
+        args: ['--maxkb=500']        # Лимит: 500 КБ
+        exclude: \.png$              # <-- ИСКЛЮЧЕНИЕ: разрешаем все PNG картинки
       - id: detect-private-key       # Ищет приватные ключи (SSH и т.п.)
 
   # 2. Проверка секретов (API-ключи, пароли, токены)
@@ -16,7 +17,7 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        args: [ '--baseline', '.secrets.baseline' ]
+        args: ['--baseline', '.secrets.baseline']
         exclude: |
           (?x)^(
             \.secrets\.baseline|

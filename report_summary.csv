@@ -1,0 +1,9 @@
+Metric,Value
+Total train images (sample),10000
+Total test images (sample),2000
+Number of classes,26
+Min images per class,349
+Min class letter,B
+Max images per class,408
+Max class letter,J
+Accuracy LogReg,72.0
